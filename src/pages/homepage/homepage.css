@@ -1,0 +1,46 @@
+/* Default styles for mobile devices */
+.currentlyReading-data {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+.wantToRead-data {
+display: grid;
+grid-template-columns: repeat(1, 1fr)
+}
+.read-data {
+display: grid;
+grid-template-columns: repeat(1, 1fr)
+}
+  
+  /* Styles for tablets (portrait) and up */
+  @media (min-width: 768px) {
+    .currentlyReading-data {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+}
+.wantToRead-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.read-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+  
+  
+  /* Styles for laptops and up */
+  @media screen and (min-width: 1024px) {
+    .currentlyReading-data {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+    }
+    .wantToRead-data {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .read-data {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+  }

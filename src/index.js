@@ -2,16 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BookContext, BookProvider } from './context/BookContext';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ReadContext, ReadProvider } from './context/ReadContext';
+import { WantToReadContext, WantToReadProvider } from './context/wantToReadContext';
+import { CurrentlyReadingContexts, CurrentlyReadingProvider } from './context/currentlyReadingContext';
+export { BookContext }
+export { ReadContext }
+export { WantToReadContext }
+export { CurrentlyReadingContexts }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <BookProvider>
+        <ReadProvider>
+        <WantToReadProvider>
+          <CurrentlyReadingProvider>
+          <App />
+          </CurrentlyReadingProvider>
+        </WantToReadProvider>
+        </ReadProvider>
+      </BookProvider>
+    </Router>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,21 @@
+/* Default styles for mobile devices */
+.search-div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+  
+  /* Styles for tablets (portrait) and up */
+  @media (min-width: 768px) {
+    .search-div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Styles for laptops and up */
+  @media screen and (min-width: 1024px) {
+    .search-div {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+  }
