@@ -21,10 +21,10 @@ const HomeComponent = () => {
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_READ_FROM_CURRENTLY', payload: book.name})
                                     }}>Add To readed</button>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_WANTS_FROM_CURRENTLY', payload: book.name})
                                     }}>Want to Read</button>
                                 </div>
@@ -45,10 +45,10 @@ const HomeComponent = () => {
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_READ_FROM_WANTS', payload: book.name})
                                     }}>Add To Read</button>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_CURRENTLY_FROM_WANTS', payload: book.name})
                                     }}>Add To Currently Reading</button>
                                 </div>
@@ -69,10 +69,10 @@ const HomeComponent = () => {
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_CURRNETLY_FROM_READS', payload: book.name})
                                     }}>Add To Currently Reading</button>
-                                    <button onClick={() => {
+                                    <button className='btn btn-primary' style={{margin: '8px'}} onClick={() => {
                                         dispatch({type: 'ADD_TO_WANTS_FROM_READS', payload: book.name})
                                     }}>Want To read</button>
                                 </div>
