@@ -1,36 +1,32 @@
 import React, { useContext } from 'react';
 import './homepage.css';
-import { BookContext } from '../../context/BookContext';
-import { ReadContext } from '../../context/ReadContext';
-import { WantToReadContext } from '../../context/wantToReadContext';
-import { CurrentlyReadingContext } from '../../context/currentlyReadingContext';
+import { BookTransferContext } from '../../context/BookTrasferContext';
+import { NavLink } from 'react-router-dom';
 
 const HomeComponent = () => {
-
-    const { state } = useContext(BookContext);
-    const { read, addToRead, removeFromRead } = useContext(ReadContext);
-    const { wantTORead } = useContext(WantToReadContext);
-    // const { currentlyRead } = useContext(CurrentlyReadingContext);
+    const {state, dispatch} = useContext(BookTransferContext);
 
     return (
         <div>
             <div className='currently-reading-div'>
-                <p style={{ fontSize: '35px', fontWeight: '700' }}>Currently Reading</p>
+                <p style={{ fontSize: '35px', fontWeight: '700' }}>Currently Reading </p>
+                <NavLink to='/search' className='btn btn-primary'>Search for Books</NavLink>
                 <hr />
                 <div className='currentlyReading-data'>
                     {
                         state?.currentlyReading.map((book) => {
                             const { name, author, image } = book
                             return (
-                                <div id={name}>
+                                <div key={name}>
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
                                     <button onClick={() => {
-                                        addToRead()
-                                        //remove from currentky reading
+                                        dispatch({type: 'ADD_TO_READ_FROM_CURRENTLY', payload: book.name})
                                     }}>Add To readed</button>
-                                    <button>Want to Read</button>
+                                    <button onClick={() => {
+                                        dispatch({type: 'ADD_TO_WANTS_FROM_CURRENTLY', payload: book.name})
+                                    }}>Want to Read</button>
                                 </div>
                             )
                         })
@@ -42,20 +38,18 @@ const HomeComponent = () => {
                 <hr />
                 <div className='wantToRead-data'>
                     {
-                        wantTORead.map((book) => {
-                            const { name, author, image } = book
+                        state?.wantToRead.map((book) => {
+                            const { name, author, image } = book;
                             return (
-                                <div id={name}>
+                                <div key={name}>
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
                                     <button onClick={() => {
-                                        addToRead(book)
-                                        // Remove from want to read
+                                        dispatch({type: 'ADD_TO_READ_FROM_WANTS', payload: book.name})
                                     }}>Add To Read</button>
                                     <button onClick={() => {
-                                        // Add to current reading
-                                        // remove from currently Reading
+                                        dispatch({type: 'ADD_TO_CURRENTLY_FROM_WANTS', payload: book.name})
                                     }}>Add To Currently Reading</button>
                                 </div>
                             )
@@ -68,20 +62,18 @@ const HomeComponent = () => {
                 <hr />
                 <div className='read-data'>
                     {
-                        read.map((book) => {
+                        state?.read.map((book) => {
                             const { name, author, image } = book
                             return (
-                                <div id={name}>
+                                <div key={name}>
                                     <img src={image} alt={name} />
                                     <p><b>{name}</b></p>
                                     <p>{author}</p>
                                     <button onClick={() => {
-                                        // Add To Currently Reading
-                                        removeFromRead(book)
+                                        dispatch({type: 'ADD_TO_CURRNETLY_FROM_READS', payload: book.name})
                                     }}>Add To Currently Reading</button>
                                     <button onClick={() => {
-                                        // Add To want to read
-                                        removeFromRead(book)
+                                        dispatch({type: 'ADD_TO_WANTS_FROM_READS', payload: book.name})
                                     }}>Want To read</button>
                                 </div>
                             )

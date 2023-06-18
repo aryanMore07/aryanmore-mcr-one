@@ -2,30 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { BookContext, BookProvider } from './context/BookContext';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ReadContext, ReadProvider } from './context/ReadContext';
-import { WantToReadContext, WantToReadProvider } from './context/wantToReadContext';
-import { CurrentlyReadingContexts, CurrentlyReadingProvider } from './context/currentlyReadingContext';
+import { BookTransferContext, BookTrasnferProvider } from './context/BookTrasferContext';
+import { BookContext, BookProvider } from './context/BookContext';
 export { BookContext }
-export { ReadContext }
-export { WantToReadContext }
-export { CurrentlyReadingContexts }
-
+export { BookTransferContext }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     <Router>
-      <BookProvider>
-        <ReadProvider>
-        <WantToReadProvider>
-          <CurrentlyReadingProvider>
+      <BookTrasnferProvider>
+        <BookProvider>
           <App />
-          </CurrentlyReadingProvider>
-        </WantToReadProvider>
-        </ReadProvider>
-      </BookProvider>
+        </BookProvider>
+      </BookTrasnferProvider>
     </Router>
   </React.StrictMode>
 );
